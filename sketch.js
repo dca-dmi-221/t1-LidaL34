@@ -1,15 +1,5 @@
 const songsData= [
   {
-    name: "All Of You",
-    file: "/Musica/All Of You.mp3",
-    img: "/Imagenes/Encanto.jpg"
-  },
-  {
-    name: "Dos Orugitas",
-    file: "/Musica/Dos Orugitas.mp3",
-    img: "/Imagenes/Encanto.jpg"
-  },
-  {
     name: "Gotta Go My Own Way",
     file: "/Musica/Gotta Go My Own Way.mp3",
     img: "/Imagenes/HSM.jpg"
@@ -20,19 +10,9 @@ const songsData= [
     img: "/Imagenes/Moana.jpg"
   },
   {
-    name: "Let It Go",
-    file: "/Musica/Let It Go.mp3",
-    img: "/Imagenes/HSM.jpg"
-  },
-  {
     name: "Rewrite The Stars",
     file: "/Musica/Rewrite The Stars.mp3",
     img: "/Imagenes/TGSM.jpg"
-  },
-  {
-    name: "Surface Pressure",
-    file: "/Musica/Surface Pressure.mp3",
-    img: "/Imagenes/Encanto.jpg"
   },
   {
     name: "The Family Madrigal",
@@ -62,8 +42,19 @@ const songsData= [
 ];
 let songFiles = [];
 let main;
+let screenInicio;
+let screenPlaylist;
+let screenLista;
+let screenLista2;
+
 
 function preload() {
+
+  screenInicio = loadImage ("Imaganes/Inicio.png");
+  screenPlaylist = loadImage ("Imaganes/Playlist.png");
+  screenLista = loadImage ("Imaganes/Lista.png");
+  screenLista2 = loadImage ("Imaganes/Lista_2.png");
+
   songFiles = songsData.map(data => {
     return {
       songFile: loadSound(data.file),
@@ -79,6 +70,23 @@ function setup() {
 
 function draw() {
   background(220);
+
+  switch (screen) {
+
+    case 0:
+      image (screenInicio,0,0,1440,1024)
+      break;
+    case 1:
+      image (screenPlaylist,0,0,1440,1024)
+      break;
+    case 2:
+      image (screenLista,0,0,1440,1024)
+      break;
+    case 3:
+      image (screenLista2,0,0,1440,1024)
+      break;
+    
+  }
 }
 
 function mouseClick() {
