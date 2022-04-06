@@ -3,6 +3,11 @@ const HEIGHT = 1025;
 
 const songsData= [
   {
+    name: "When Will My Life Begin",
+    file: "/Musica/When Will My Life Begin.mp3",
+    img: "/Imagenes/Tangle.jpg"
+  },
+  {
     name: "Gotta Go My Own Way",
     file: "/Musica/Gotta Go My Own Way.mp3",
     img: "/Imagenes/HSM.jpg"
@@ -28,20 +33,15 @@ const songsData= [
     img: "/Imagenes/Encanto.jpg"
   },
   {
-    name: "We Dont Talk About Bruno",
-    file: "/Musica/We Dont Talk About Bruno.mp3",
-    img: "/Imagenes/Encanto.jpg"
-  },
-  {
     name: "What Else Can I Do",
     file: "/Musica/What Else Can I Do.mp3",
     img: "/Imagenes/Encanto.jpg"
   },
   {
-    name: "When Will My Life Begin",
-    file: "/Musica/When Will My Life Begin.mp3",
-    img: "/Imagenes/Tangle.jpg"
-  }
+    name: "We Dont Talk About Bruno",
+    file: "/Musica/We Dont Talk About Bruno.mp3",
+    img: "/Imagenes/Encanto.jpg"
+  },
 ];
 let songFiles = [];
 let app;
@@ -50,6 +50,7 @@ let screenInicio;
 let screenPlaylist;
 let screenLista;
 let screenLista2;
+let clickCounter = 0;
 
 
 function preload() {
@@ -61,6 +62,7 @@ function preload() {
 
   songFiles = songsData.map(data => {
     return {
+      name: data.name,
       songFile: loadSound(data.file),
       imgFile: loadImage(data.img)
     }
@@ -70,53 +72,18 @@ function preload() {
 function setup() {
   screen = 0;
   createCanvas(WIDTH, HEIGHT);
-  app = new App();
+  app = new App(songFiles);
 
   //main = new Main(songsData, songFiles);
 }
 
 function draw() {
   background(220);
-
-
-  switch (screen) {
-    case 0:
-      image (screenInicio,0,0,1440,1024)
-      break;
-    case 1:
-      image (screenPlaylist,0,0,1440,1024)
-      break;
-    case 2:
-      image (screenLista,0,0,1440,1024)
-      break;
-    case 3:
-      image (screenLista2,0,0,1440,1024)
-      break;
-    
-  }
+  app.draw();
   text("x:" + mouseX + " y: " + mouseY, mouseX, mouseY);
 }
 
-function mouseClicked() {
-  
-      }
 
 function mousePressed() {
-  if (screen === 0) {
-    if (mouseX > 112 && mouseX < 486 && mouseY > 654 && mouseY < 744) {
-        screen = 1;
-    }
-  }
-  if (screen === 1) {
-      if (mouseX > 157 && mouseX < 490 && mouseY > 288 && mouseY < 618) {
-        screen = 2;
-      } else if (mouseX > 552 && mouseX < 884 && mouseY > 288 && mouseY < 725) {
-        screen = 3;
-      } }
-      
-      else {
-        if (dist(mouseX, mouseY, 30, 26) < 20) {
-          screen = 1;
-        }  
-  }
+  app.press();
 }
