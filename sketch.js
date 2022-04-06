@@ -1,3 +1,6 @@
+const WIDTH =  1440;
+const HEIGHT = 1025;
+
 const songsData= [
   {
     name: "Gotta Go My Own Way",
@@ -41,6 +44,7 @@ const songsData= [
   }
 ];
 let songFiles = [];
+let app;
 let main;
 let screenInicio;
 let screenPlaylist;
@@ -50,10 +54,10 @@ let screenLista2;
 
 function preload() {
 
-  screenInicio = loadImage ("Imaganes/Inicio.png");
-  screenPlaylist = loadImage ("Imaganes/Playlist.png");
-  screenLista = loadImage ("Imaganes/Lista.png");
-  screenLista2 = loadImage ("Imaganes/Lista_2.png");
+  screenInicio = loadImage ("Imagenes/Inicio.png");
+  screenPlaylist = loadImage ("Imagenes/Playlist.png");
+  screenLista = loadImage ("Imagenes/Lista.png");
+  screenLista2 = loadImage ("Imagenes/Lista_2.png");
 
   songFiles = songsData.map(data => {
     return {
@@ -64,15 +68,18 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(400, 400);
-  main = new Main(songsData, songFiles);
+  screen = 0;
+  createCanvas(WIDTH, HEIGHT);
+  app = new App();
+
+  //main = new Main(songsData, songFiles);
 }
 
 function draw() {
   background(220);
 
-  switch (screen) {
 
+  switch (screen) {
     case 0:
       image (screenInicio,0,0,1440,1024)
       break;
@@ -87,12 +94,29 @@ function draw() {
       break;
     
   }
+  text("x:" + mouseX + " y: " + mouseY, mouseX, mouseY);
 }
 
-function mouseClick() {
-  app.click();
-}
+function mouseClicked() {
+  
+      }
 
-function mousePress() {
-  app.press();
+function mousePressed() {
+  if (screen === 0) {
+    if (mouseX > 112 && mouseX < 486 && mouseY > 654 && mouseY < 744) {
+        screen = 1;
+    }
+  }
+  if (screen === 1) {
+      if (mouseX > 157 && mouseX < 490 && mouseY > 288 && mouseY < 618) {
+        screen = 2;
+      } else if (mouseX > 552 && mouseX < 884 && mouseY > 288 && mouseY < 725) {
+        screen = 3;
+      } }
+      
+      else {
+        if (dist(mouseX, mouseY, 30, 26) < 20) {
+          screen = 1;
+        }  
+  }
 }
