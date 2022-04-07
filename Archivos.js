@@ -9,10 +9,11 @@ class Archivo  {
 
     press(i) {
         const offY = 150 * i;
-        if(mouseX > 50 && mouseX < 770 && mouseY > 310 + offY && mouseY < 440 + offY) {
-            this._song.play();
-            return true;
-        } else return false;
+        return (mouseX > 50 && mouseX < 770 && mouseY > 310 + offY && mouseY < 440 + offY)
+    }
+
+    play(){
+      this._song.play();
     }
 
     stop() {
@@ -27,6 +28,10 @@ class Archivo  {
     draw() {
         image(this._img, 819, 302);
 
+    }
+
+    get song(){
+      return this._song;
     }
 
   get isSelected() {

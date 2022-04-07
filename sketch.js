@@ -93,6 +93,6 @@ function draw() {
 }
 
 
-function mousePressed() {
+function mouseClicked() {
   app.press();
 }
