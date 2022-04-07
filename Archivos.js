@@ -4,6 +4,7 @@ class Archivo  {
         this._artist = artist;
         this._song = song;
         this._img = img;
+        this._isSelected = false;
     }
 
     press(i) {
@@ -18,8 +19,20 @@ class Archivo  {
         this._song.stop();
     }
 
+    toggleSong() {
+        if(this._song.isPlaying()) this._song.pause();
+        else this._song.play();
+      }
+
     draw() {
         image(this._img, 819, 302);
 
     }
+
+  get isSelected() {
+    return this._isSelected;
+  }
+  set isSelected(val) {
+    this._isSelected = val;
+  } 
 }

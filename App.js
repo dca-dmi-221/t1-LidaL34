@@ -23,7 +23,7 @@ class App {
             case 2:
               image (screenLista,0,0,1440,1024)
               this.songs1[this.currentSong].draw();
-            //  this.infoCurrentSong();
+              //this.infoCurrentSong();
               break;
             case 3:
               image (screenLista2,0,0,1440,1024);
@@ -36,7 +36,9 @@ class App {
     }
     
     press() {
-
+        const currIndex = this.currentSong;
+     const currSong = this.songs1[currIndex];
+  const currSong2 = this.songs2[currIndex];
        
         if (this.clickCounter <= frameCount && this.screen === 0) {
             if (mouseX > 112 && mouseX < 486 && mouseY > 654 && mouseY < 744) {
@@ -67,24 +69,49 @@ class App {
                 }
             }
         } 
+
+            if (dist(mouseX, mouseY, 1008, 655 < 20) <= 25 && currSong) currSong.toggleSong();
+         if(currSong) {
+      if(mouseX > 235 && mouseX < 255 && mouseY > 275 && mouseY < 295) {
+        currSong.song.stop();
+        currSong.isSelected = false;
+        this._currentSong = this._currentSong === this._songs.length - 1 ? 0 : this._currentSong + 1;
+        this._songs[this._currentSong].song.play();
+        this._songs[this._currentSong].isSelected = true;
+      }
+      if(mouseX > 120 && mouseX < 140 && mouseY > 275 && mouseY < 295) {
+        currSong.song.stop();
+        currSong.isSelected = false;
+        this._currentSong = this._currentSong === 0 ? this._songs.length - 1 : this._currentSong - 1;
+        this._songs[this._currentSong].song.play();
+        this._songs[this._currentSong].isSelected = true;
+      }
+    }
+        
+
     }
 
-   // infoCurrentSong() {
-    //     const currIndex = this.currentSong;
-    //     const currSong = this.songs1[currIndex];
-    //    // const currSong2 = this.songs2[currIndex];
-    //     if(currIndex === null) {
-           
-    //     }else{
-            //console.log('que si ome')
-      //  fill(0);
-      //  textStyle(BOLD);
-      //  text ('helo', 819, 739);
-        //text(currSong.name,819,739);
-        //text(currSong.name, 819,739);
-        //textStyle(NORMAL);
-        //text(currSong.artist,819,781);
-     //   }
+
+    changeSong(list) {
+        list.forEach((song, i) => {
+            if (song) song.stop();
+            if(song.press(i)) this.currentSong = i;
+            
+        });
+    }
+
+}
+
+
+        //     console.log('que si ome')
+        // fill(0);
+        // textStyle(BOLD);
+        // text ('helo', 819, 739);
+        // text(currSong.name,819,739)
+        // text(currSong.name, 819,739);
+        // textStyle(NORMAL);
+        // text(currSong.artist,819,781);
+        
         // if(currIndex === null) {
            
         // }else{
@@ -96,15 +123,24 @@ class App {
         // textStyle(NORMAL);
         // text(currSong2.artist,819,781);
         // }
+
+          // infoCurrentSong() {
+    //     const currIndex = this.currentSong;
+    //   //  const currSong = this.songs1[currIndex];
+    //    // const currSong2 = this.songs2[currIndex];
+    //     if(currIndex === null) {
+           
+    //     }else{
+    //         fill(51);
+
+    //         if(this.songs1.isPlaying()) {
+    //           rect(179, 275, 5, 20);
+    //           rect(191, 275, 5, 20);
+      
+    //           fill(190, 49, 49);
+    //         } else {
+    //           triangle(182, 296, 182, 273, 197, 285);
+    //         }
+    //     }
         
-  //  }
-
-    changeSong(list) {
-        list.forEach((song, i) => {
-            if (song) song.stop();
-            if(song.press(i)) this.currentSong = i;
-            
-        });
-    }
-
-}
+    // }
