@@ -6,7 +6,7 @@ class App {
         this.songs2 = [];
         this.currentSong = 0;
         songFiles.forEach((song, i) => {
-            const newSong = new Archivo(song.name, song.songFile, song.imgFile);
+            const newSong = new Archivo(song.name, song.artist, song.songFile, song.imgFile);
             if(i >= 4) this.songs1.push(newSong);
             else this.songs2.push(newSong);
         })
@@ -22,14 +22,22 @@ class App {
               break;
             case 2:
               image (screenLista,0,0,1440,1024)
+              this.songs1[this.currentSong].draw();
+            //  this.infoCurrentSong();
               break;
             case 3:
-              image (screenLista2,0,0,1440,1024)
+              image (screenLista2,0,0,1440,1024);
+              this.songs2[this.currentSong].draw();  
+              //this.infoCurrentSong();
               break;   
         }
-    }
 
+      
+    }
+    
     press() {
+
+       
         if (this.clickCounter <= frameCount && this.screen === 0) {
             if (mouseX > 112 && mouseX < 486 && mouseY > 654 && mouseY < 744) {
                 this.screen = 1;
@@ -46,8 +54,8 @@ class App {
             }
         } else {
             if (dist(mouseX, mouseY, 30, 26) < 20) {
-                if(this.screen === 2) this.songs1[this.currentSong].stop();
-                else this.songs2[this.currentSong].stop();
+                if(this.screen === 2) this.songs1.forEach(song => song.stop());
+                else this.songs2.forEach(song => song.stop());
                 this.currentSong = 0;
                 this.screen = 1;
             }
@@ -58,14 +66,45 @@ class App {
                     this.changeSong(this.songs2);
                 }
             }
-        }  
+        } 
     }
 
+   // infoCurrentSong() {
+    //     const currIndex = this.currentSong;
+    //     const currSong = this.songs1[currIndex];
+    //    // const currSong2 = this.songs2[currIndex];
+    //     if(currIndex === null) {
+           
+    //     }else{
+            //console.log('que si ome')
+      //  fill(0);
+      //  textStyle(BOLD);
+      //  text ('helo', 819, 739);
+        //text(currSong.name,819,739);
+        //text(currSong.name, 819,739);
+        //textStyle(NORMAL);
+        //text(currSong.artist,819,781);
+     //   }
+        // if(currIndex === null) {
+           
+        // }else{
+        //     console.log('que si ome')
+        // fill(0);
+        // textStyle(BOLD);
+        // text ('helo', 819, 739);
+        // text(currSong2.name, 819,739);
+        // textStyle(NORMAL);
+        // text(currSong2.artist,819,781);
+        // }
+        
+  //  }
+
     changeSong(list) {
-        list[this.currentSong].stop();
         list.forEach((song, i) => {
-            song.press(i);
-            this.currentSong = i;
+            if (song) song.stop();
+            if(song.press(i)) this.currentSong = i;
+            
         });
     }
+
 }
