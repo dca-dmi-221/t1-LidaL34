@@ -5,50 +5,50 @@ const songsData= [
   {
     name: "Gotta Go My Own Way",
     artist: "High School Musical",
-    file: "/Musica/Gotta Go My Own Way.mp3",
-    img: "/Imagenes/HSM.png"
+    file: "./Musica/Gotta Go My Own Way.mp3",
+    img: "./Imagenes/HSM.png"
   },
   {
     name: "How Far Ill Go",
     artist: "High School Moana",
-    file: "/Musica/How Far Ill Go.mp3",
-    img: "/Imagenes/Moana.png"
+    file: "./Musica/How Far Ill Go.mp3",
+    img: "./Imagenes/Moana.png"
   },
   {
     name: "Rewrite The Stars",
     artist: "The Greatest Showman",
-    file: "/Musica/Rewrite The Stars.mp3",
-    img: "/Imagenes/TGSM.png"
+    file: "./Musica/Rewrite The Stars.mp3",
+    img: "./Imagenes/TGSM.png"
   },
   {
     name: "When Will My Life Begin",
     artist: "Tangle",
-    file: "/Musica/When Will My Life Begin.mp3",
-    img: "/Imagenes/Tangle.png"
+    file: "./Musica/When Will My Life Begin.mp3",
+    img: "./Imagenes/Tangle.png"
   },
   {
     name: "The Family Madrigal",
     artist: "Encanto",
-    file: "/Musica/The Family Madrigal.mp3",
-    img: "/Imagenes/Encanto.png"
+    file: "./Musica/The Family Madrigal.mp3",
+    img: "./Imagenes/Encanto.png"
   },
   {
     name: "Waiting On A Miracle",
     artist: "Encanto",
-    file: "/Musica/Waiting On A Miracle.mp3",
-    img: "/Imagenes/Encanto_2.png"
+    file: "./Musica/Waiting On A Miracle.mp3",
+    img: "./Imagenes/Encanto_2.png"
   },
   {
     name: "What Else Can I Do",
     artist: "Encanto",
-    file: "/Musica/What Else Can I Do.mp3",
-    img: "/Imagenes/Encanto_3.png"
+    file: "./Musica/What Else Can I Do.mp3",
+    img: "./Imagenes/Encanto_3.png"
   },
   {
     name: "We Dont Talk About Bruno",
     artist: "Encanto",
-    file: "/Musica/We Dont Talk About Bruno.mp3",
-    img: "/Imagenes/Encanto_4.png"
+    file: "./Musica/We Dont Talk About Bruno.mp3",
+    img: "./Imagenes/Encanto_4.png"
   },
 ];
 let songFiles = [];
